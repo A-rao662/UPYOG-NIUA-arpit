@@ -573,8 +573,9 @@ const UserProfile = ({ stateCode, userType, cityDetails }) => {
                     <CardLabel style={editScreen ? { color: "#B1B4B6" } : {}}>{`${t("CORE_COMMON_PROFILE_MOBILE_NUMBER")}*`}</CardLabel>
                     <div style={{ width: "100%" }}>
                       <MobileNumber
+                           className="mobile-input-css"
                         value={mobileNumber}
-                        style={{ width: "100%" }}
+                        style={{ width: "100%",borderRadius:"0px 10px 10px 0px!important"  }}
                         name="mobileNumber"
                         placeholder="Enter a valid Mobile No."
                         onChange={(value) => setUserMobileNumber(value)}
@@ -588,8 +589,9 @@ const UserProfile = ({ stateCode, userType, cityDetails }) => {
                     <CardLabel style={editScreen ? { color: "#B1B4B6" } : {}}>{`${t("CORE_COMMON_PROFILE_ALT_MOBILE_NUMBER")}*`}</CardLabel>
                     <div style={{ width: "100%" }}>
                       <MobileNumber
+                           className="mobile-input-css"
                         value={altMobileNumber}
-                        style={{ width: "100%" }}
+                        style={{ width: "100%" ,borderRadius:"0px 10px 10px 0px!important" }}
                         name="altMobileNumber"
                         placeholder="Enter a valid Mobile No."
                         onChange={(value) => setUserAltMobileNumber(value)}
@@ -736,7 +738,8 @@ const UserProfile = ({ stateCode, userType, cityDetails }) => {
                   <div style={{ width: "100%" }}>
                     <MobileNumber
                       value={mobileNumber}
-                      style={{ width: "100%" }}
+                      className="mobile-input-css"
+                      style={{ width: "100%",borderRadius:"0px 10px 10px 0px!important" }}
                       name="mobileNumber"
                       placeholder="Enter a valid Mobile No."
                       onChange={(value) => setUserMobileNumber(value)}
