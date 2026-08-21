@@ -12,12 +12,17 @@ import org.upyog.Automation.Modules.Asset.AssetApprover;
 import org.upyog.Automation.Modules.Asset.AssetEmp;
 import org.upyog.Automation.Modules.Asset.AssetVerifier;
 import org.upyog.Automation.Modules.CHB.chbEmp;
+import org.upyog.Automation.Modules.ChallanGene.CGEmp;
 import org.upyog.Automation.Modules.CnD.CnDEmp;
 import org.upyog.Automation.Modules.DesludgingService.DelsudgingEmployeeComplete;
 import org.upyog.Automation.Modules.DesludgingService.DelsudgingFstpo;
 import org.upyog.Automation.Modules.DesludgingService.DesludgingAssignPsso;
 import org.upyog.Automation.Modules.DesludgingService.DesludgingEmployeeUpdate;
 import org.upyog.Automation.Modules.EWaste.EWasteEmp;
+import org.upyog.Automation.Modules.EstateManagement.EMEmp;
+import org.upyog.Automation.Modules.GarbageCollection.GCCreate;
+import org.upyog.Automation.Modules.GarbageCollection.GCEmp;
+import org.upyog.Automation.Modules.NDC.NdcEmp;
 import org.upyog.Automation.Modules.OBPAS.OBPASEmp;
 import org.upyog.Automation.Modules.OBPAS.OBPASOcEmp;
 import org.upyog.Automation.Modules.Pet.PetApplicationEmp;
@@ -120,6 +125,18 @@ public class CommonEmployeeTest extends BaseTest {
 
     @Autowired
     private DelsudgingFstpo delsudgingFstpo;
+
+    @Autowired
+    private GCEmp gcEmp;
+
+    @Autowired
+    private EMEmp emEmp;
+
+    @Autowired
+    private CGEmp cgEmp;
+
+    @Autowired
+    private NdcEmp ndcEmp;
 
 
     private void employeeSetUp(String baseUrl) {
@@ -461,6 +478,38 @@ public class CommonEmployeeTest extends BaseTest {
                     );
 
                     break;
+
+                case "GARBAGE_COLLECTION":
+                    ModuleWrapper.execute(
+                            "GARBAGE_COLLECTION",
+                            () -> gcEmp.gcInboxEmp(driver, wait, js)
+                    );
+                    break;
+
+                case "ESTATE_MANAGEMENT":
+                    ModuleWrapper.execute(
+                            "ESTATE_MANAGEMENT",
+                            () -> emEmp.emInboxEmp(driver, wait, js)
+                    );
+                    break;
+
+                case "CHALLAN_GENERATION":
+                    ModuleWrapper.execute(
+                            "CHALLAN_GENERATION",
+                            () -> cgEmp.cgInboxEmp(driver, wait, js)
+                    );
+                    break;
+
+                case "NO_DUE_CERTIFICATE":
+                    ModuleWrapper.execute(
+                            "NO_DUE_CERTIFICATE",
+                            () -> ndcEmp.ndcInboxEmp(driver, wait, js)
+                    );
+                    break;
+
+
+
+
 
                 default:
                     logger.error("Unknown module: {}", moduleName);

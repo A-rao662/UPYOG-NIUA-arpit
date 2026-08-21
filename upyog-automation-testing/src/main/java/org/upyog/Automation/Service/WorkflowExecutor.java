@@ -32,13 +32,15 @@ public class WorkflowExecutor {
             String stakeholderPath,
             String citizenUrl
     ) {
-        String employeeUrl = citizenUrl;
+        String citizenBaseUrl;
+        String employeeUrl;
 
-        if (citizenUrl.contains("/citizen/login")) {
-            employeeUrl = citizenUrl.replace(
-                    "/citizen/login",
-                    "/employee/login"
-            );
+        if (citizenUrl.contains("/employee/login")) {
+            employeeUrl = citizenUrl;
+            citizenBaseUrl = citizenUrl.replace("/employee/login", "/citizen/login");
+        } else {
+            citizenBaseUrl = citizenUrl;
+            employeeUrl = citizenUrl.replace("/citizen/login", "/employee/login");
         }
         logger.info("ENTERED executeWorkflow()");
         logger.info("Workflow Path : {}", workflowPath);
@@ -111,7 +113,7 @@ public class WorkflowExecutor {
                         );
 
                         citizenTestService.runCitizenSideTest(
-                                citizenUrl,
+                                citizenBaseUrl,
                                 step.getModule(),
                                 stakeholder.getCitizen().getMobile(),
                                 stakeholder.getCitizen().getOtp(),
@@ -161,17 +163,11 @@ public class WorkflowExecutor {
 
                         logger.info("Using Application No = {}", applicationNo);
 
-                        if (applicationNo == null || applicationNo.isBlank()) {
-                            throw new RuntimeException(
-                                    "Application number not found."
-                            );
-                        }
-
                         if (!"INITIATOR".equalsIgnoreCase(step.getRole())) {
 
                             if (applicationNo == null || applicationNo.isBlank()) {
                                 throw new RuntimeException(
-                                        "APPLICATION_NO not found in WorkflowDataStore"
+                                        "APPLICATION_NO not found in WorkflowDataStore"+ step.getModule()
                                 );
                             }
                         }
@@ -202,7 +198,7 @@ public class WorkflowExecutor {
                         }
 
                         vendorTestService.runVendorTest(
-                                citizenUrl,
+                                citizenBaseUrl,
                                 step.getModule(),
                                 vendor.getMobile(),
                                 vendor.getOtp(),

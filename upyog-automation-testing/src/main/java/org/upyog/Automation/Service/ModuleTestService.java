@@ -269,6 +269,41 @@ public class ModuleTestService {
 
                 return "Workflow Executed";
 
+            case "GARBAGE_COLLECTION":
+                workflowExecutor.executeWorkflow(
+                        "test-config/garbageCollection/gc_workflow.json",
+                        "test-config/garbageCollection/gc_stakeholder_module.json",
+                        citizenUrl
+                );
+                return "Workflow Executed";
+
+            case "ESTATE_MANAGEMENT":
+                workflowExecutor.executeWorkflow(
+                        "test-config/estateManagement/estateManagement_workflow_module.json",
+                        "test-config/estateManagement/estateManagement_stakeholder_module.json",
+                        citizenUrl
+                );
+                return "Workflow Executed";
+
+            case "CHALLAN_GENERATION":
+                workflowExecutor.executeWorkflow(
+                        "test-config/challanGeneration/cg_workflow_module.json",
+                        "test-config/challanGeneration/cg_stakeholder_module.json",
+                        citizenUrl
+                );
+                return "Workflow Executed";
+
+
+            case "NO_DUE_CERTIFICATE":
+                workflowExecutor.executeWorkflow(
+                        "test-config/noDueCertificate/ndc_workflow.json",
+                        "test-config/noDueCertificate/ndc_stakeholder_module.json",
+                        citizenUrl
+                );
+                return "Workflow Executed";
+
+
+
 
             default:
 

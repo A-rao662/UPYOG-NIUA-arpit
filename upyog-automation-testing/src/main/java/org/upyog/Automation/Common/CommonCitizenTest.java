@@ -12,6 +12,10 @@ import org.upyog.Automation.Modules.DesludgingService.DesludgingCitizenPayment;
 import org.upyog.Automation.Modules.DesludgingService.DesludgingCitizenPayment2;
 import org.upyog.Automation.Modules.DesludgingService.DesludgingCreate;
 import org.upyog.Automation.Modules.EWaste.EWasteCreate;
+import org.upyog.Automation.Modules.EstateManagement.EMCitizenCreate;
+import org.upyog.Automation.Modules.GarbageCollection.GCCitizenPayment;
+import org.upyog.Automation.Modules.GarbageCollection.GCCreate;
+import org.upyog.Automation.Modules.NDC.NdcCitizenCreate;
 import org.upyog.Automation.Modules.OBPAS.OBPASCreate;
 import org.upyog.Automation.Modules.OBPAS.OBPASOcCreate;
 import org.upyog.Automation.Modules.Pet.PetCreateApplication;
@@ -92,6 +96,18 @@ public class CommonCitizenTest extends BaseTest {
 
     @Autowired
     private WAndSCreate wAndSCreate;
+
+    @Autowired
+    private GCCreate gcCreate;
+
+    @Autowired
+    private GCCitizenPayment gcCitizenPayment;
+
+    @Autowired
+    private EMCitizenCreate emCitizenCreate;
+
+    @Autowired
+    private NdcCitizenCreate ndcCitizenCreate;
 
     public void runCitizenTest(String baseUrl, String moduleName, String mobileNumber, String otp, String cityName, String permitNumber) throws InterruptedException {
         setUp();
@@ -346,6 +362,55 @@ public class CommonCitizenTest extends BaseTest {
                     );
 
                     break;
+
+                case "GARBAGE_COLLECTION":
+                        ModuleWrapper.execute(
+                                "GARBAGE_COLLECTION",
+                                () -> gcCreate.gCReg(
+                                        driver,
+                                        wait,
+                                        js
+                                )
+                        );
+
+                    break;
+
+                case "GARBAGE_COLLECTION_PAYMENT":
+                    ModuleWrapper.execute(
+                            "GARBAGE_COLLECTION_PAYMENT",
+                            () -> gcCitizenPayment.gCPaymentReg(
+                                    driver,
+                                    wait,
+                                    js
+                            )
+                    );
+
+                    break;
+
+                case "ESTATE_MANAGEMENT":
+                    ModuleWrapper.execute(
+                            "ESTATE_MANAGEMENT",
+                            () -> emCitizenCreate.emReg(
+                                    driver,
+                                    wait,
+                                    js
+                            )
+                    );
+
+                    break;
+
+                case "NO_DUE_CERTIFICATE":
+                    ModuleWrapper.execute(
+                            "NO_DUE_CERTIFICATE",
+                            () -> ndcCitizenCreate.ndcReg(
+                                    driver,
+                                    wait,
+                                    js
+                            )
+                    );
+
+                    break;
+
 
                 default:
                     logger.error("Unknown module: {}", moduleName);
@@ -657,6 +722,57 @@ public class CommonCitizenTest extends BaseTest {
                         );
 
                         break;
+
+                    case "GARBAGE_COLLECTION":
+                        ModuleWrapper.execute(
+                                "GARBAGE_COLLECTION",
+                                () -> gcCreate.gCReg(
+                                        driver,
+                                        wait,
+                                        js
+                                )
+                        );
+
+                        break;
+
+                    case "GARBAGE_COLLECTION_PAYMENT":
+                        ModuleWrapper.execute(
+                                "GARBAGE_COLLECTION_PAYMENT",
+                                () -> gcCitizenPayment.gCPaymentReg(
+                                        driver,
+                                        wait,
+                                        js
+                                )
+                        );
+
+                        break;
+
+                    case "ESTATE_MANAGEMENT":
+                        ModuleWrapper.execute(
+                                "ESTATE_MANAGEMENT",
+                                () -> emCitizenCreate.emReg(
+                                        driver,
+                                        wait,
+                                        js
+                                )
+                        );
+
+                        break;
+
+
+                    case "NO_DUE_CERTIFICATE":
+                        ModuleWrapper.execute(
+                                "NO_DUE_CERTIFICATE",
+                                () -> ndcCitizenCreate.ndcReg(
+                                        driver,
+                                        wait,
+                                        js
+                                )
+                        );
+
+                        break;
+
+
 
                     default:
                         logger.warn("Skipping unknown module: {}", moduleName);

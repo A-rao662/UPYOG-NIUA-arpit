@@ -1,0 +1,333 @@
+{
+  "moduleName": "ndc_citizen_module",
+  "description": "No Due Certificate registration workflow",
+  "baseUrl": "${selected.url}",
+  "instructions": [
+
+    {
+      "stepName": "Navigate to Garbage Collection module",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//a[@href='${module.ndc.url}']",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Click New Request",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//*[contains(text(),'New Application')]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 1500
+    },
+    {
+      "stepName": "Reason for Applying Dropdown",
+      "locatorStrategy": "CSS",
+      "locatorValue": "div.select svg.cp",
+      "action": "SELECT_DROPDOWN_BY_INDEX",
+      "inputValue": "0:0",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Enter Property ID",
+      "locatorStrategy": "LABEL",
+      "locatorValue":"Property ID *",
+      "action": "TYPE_BY_LABEL",
+      "inputValue": "${property.id}",
+      "dynamicSleep": 500
+    },
+    {
+      "stepName": "Search Property",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//div[contains(@class,'ndc_property_search')]//button[contains(.,'Search')]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 3000
+    },
+    {
+      "stepName": "Click Check Dues button",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//div[contains(@class,'ndc_property_search')]//button[contains(.,'Check Status for Property')]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 3000
+    },
+    {
+      "stepName": "Click Pay Due button",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//div[contains(@class, 'ndc_property_search')//button[contains(.,'PAY_DUES')]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 3000
+    },
+    {
+      "stepName": "Click Proceed To Pay",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[contains(translate(.,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'),'Proceed to pay')]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 3000
+    },
+    {
+      "stepName": "Payer Details",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//label[normalize-space()='I am making the payment as the owner/ consumer of the service']/preceding-sibling::span/input[@type='radio']",
+      "action": "CLICK_JS",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Payer Next",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[contains(.,'Next')]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Select ICICI",
+      "locatorStrategy": "XPATH",
+      "locatorValue":"//label[normalize-space()='ICICI']/preceding-sibling::span/input[@type='radio']",
+      "action": "CLICK_JS",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Click UPYOG Pay",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[contains(@class,'submit-bar') and .//header[normalize-space()='Pay']]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 4000
+    },
+    {
+      "stepName": "Open Cards Section",
+      "locatorStrategy": "ID",
+      "locatorValue": "nbAccordionBtn",
+      "action": "CLICK",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Select Test Bank",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//input[@type='radio' and @value='Test Bank']",
+      "action": "CLICK_JS",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Click Pay Now",
+      "locatorStrategy": "ID",
+      "locatorValue": "paytBtn1",
+      "action": "CLICK",
+      "dynamicSleep": 3000
+    },
+    {
+      "stepName": "Enter OTP",
+      "locatorStrategy": "ID",
+      "locatorValue": "otp",
+      "action": "TYPE",
+      "inputValue": "123456",
+      "dynamicSleep": 500
+    },
+    {
+      "stepName": "Verify OTP",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[@onclick='cardsubmit()']",
+      "action": "CLICK_JS",
+      "dynamicSleep": 5000
+    },
+    {
+      "stepName": "Accept Transaction Alert",
+      "action": "ACCEPT_ALERT",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Navigate to Garbage Collection module",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//a[@href='${module.ndc.url}']",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Click New Request",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//*[contains(text(),'New Application')]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 1500
+    },
+    {
+      "stepName": "Reason for Applying Dropdown",
+      "locatorStrategy": "CSS",
+      "locatorValue": "div.select svg.cp",
+      "action": "SELECT_DROPDOWN_BY_INDEX",
+      "inputValue": "0:0",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Enter Property ID",
+      "locatorStrategy": "LABEL",
+      "locatorValue":"Property ID *",
+      "action": "TYPE_BY_LABEL",
+      "inputValue": "${property.id}",
+      "dynamicSleep": 500
+    },
+    {
+      "stepName": "Click Search button",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[contains(@class, 'submit-bar') and .//header[text()='Search']]",
+      "action": "CLICK",
+      "inputValue": null,
+      "dynamicSleep": 3000
+    },
+    {
+      "stepName": "Click Search button",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[contains(@class, 'submit-bar') and .//header[text()='Check Status for Property']]",
+      "action": "CLICK",
+      "inputValue": null,
+      "dynamicSleep": 3000
+    },
+    {
+      "stepName": "Select Owner Name",
+      "locatorStrategy": "XPATH",
+      "locatorValue":"//name[normalize-space()='applicationFee']/preceding-sibling::span/input[@type='radio']",
+      "action": "CLICK_JS",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Enter Mobile Number",
+      "locatorStrategy": "LABEL",
+      "locatorValue":"NDC_ADDRESS * ",
+      "action": "TYPE_BY_LABEL",
+      "inputValue": "${address.line1}",
+      "dynamicSleep": 2000
+    },
+    {
+      "stepName": "Application Detail Next",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[contains(.,'Next')]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Upload Registration Proof",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "(//input[@type='file'])[1]",
+      "action": "UPLOAD_FILE",
+      "inputValue": "${document.common.proof}",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Upload Last Property Proof",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "(//input[@type='file'])[2]",
+      "action": "UPLOAD_FILE",
+      "inputValue": "${document.common.proof}",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Upload Identity Proof",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "(//input[@type='file'])[3]",
+      "action": "UPLOAD_FILE",
+      "inputValue": "${document.common.proof}",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Upload Address Proof",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "(//input[@type='file'])[4]",
+      "action": "UPLOAD_FILE",
+      "inputValue": "${document.common.proof}",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Document Detail Next",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[contains(.,'Next')]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Click TAKE ACTION",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[.//header[normalize-space()='TAKE ACTION']]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 2000
+    },
+    {
+      "stepName":"Click VERIFY",
+      "locatorStrategy":"XPATH",
+      "locatorValue":"//div[contains(@class,'menu-wrap')]//p[normalize-space()='WF_EMPLOYEE_NDC_APPLY']",
+      "action":"CLICK_JS",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName":"Make Payment",
+      "locatorStrategy":"XPATH",
+      "locatorValue":"//button[contains(.,'Make Payment')]",
+      "action":"CLICK_JS",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Select ICICI",
+      "locatorStrategy": "XPATH",
+      "locatorValue":"//label[normalize-space()='ICICI']/preceding-sibling::span/input[@type='radio']",
+      "action": "CLICK_JS",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Click UPYOG Pay",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[contains(@class,'submit-bar') and .//header[normalize-space()='Pay']]",
+      "action": "CLICK_JS",
+      "inputValue": null,
+      "dynamicSleep": 4000
+    },
+    {
+      "stepName": "Open Cards Section",
+      "locatorStrategy": "ID",
+      "locatorValue": "nbAccordionBtn",
+      "action": "CLICK",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Select Test Bank",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//input[@type='radio' and @value='Test Bank']",
+      "action": "CLICK_JS",
+      "dynamicSleep": 1000
+    },
+    {
+      "stepName": "Click Pay Now",
+      "locatorStrategy": "ID",
+      "locatorValue": "paytBtn1",
+      "action": "CLICK",
+      "dynamicSleep": 3000
+    },
+    {
+      "stepName": "Enter OTP",
+      "locatorStrategy": "ID",
+      "locatorValue": "otp",
+      "action": "TYPE",
+      "inputValue": "123456",
+      "dynamicSleep": 500
+    },
+    {
+      "stepName": "Verify OTP",
+      "locatorStrategy": "XPATH",
+      "locatorValue": "//button[@onclick='cardsubmit()']",
+      "action": "CLICK_JS",
+      "dynamicSleep": 5000
+    },
+    {
+      "stepName": "Accept Transaction Alert",
+      "action": "ACCEPT_ALERT",
+      "dynamicSleep": 1000
+    }
+  ]
+}
+
